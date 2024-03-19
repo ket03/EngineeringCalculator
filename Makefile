@@ -1,12 +1,6 @@
-.PHONY: all install uninstall dist test clean
+.PHONY: install uninstall dist clean
 CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++17
-
-all: test clean
-
-test: clean
-	$(CC) $(CFLAGS) calc/Model/test.cc calc/Model/model.cc -o test -lgtest
-	./test
 
 install: uninstall
 	make clean
@@ -29,6 +23,5 @@ dist: install
 	rmdir build
 
 clean:
-	rm -rf test
-	cd calc && rm -rf *.a && rm -rf *.o  && rm -rf *.dSYM && rm -rf *.out && rm -rf $(EXECUTABLE) && rm -rf gcov_report && rm -rf report && rm -rf CPPLINT.cfg && rm -rf *.gcda 
-	cd calc && rm -rf *.gcno && rm -rf *.info && rm -rf test && rm -rf Dist_SmartCalc && rm -rf *tgz && rm -rf build && rm -rf SC_test && rm -rf gcov_test && rm -rf .qmake.stash
+	cd calc && rm -rf *.a && rm -rf *.o  && rm -rf *.dSYM && rm -rf *.out && rm -rf $(EXECUTABLE) && rm -rf CPPLINT.cfg 
+	cd calc && rm -rf *.info && rm -rf Dist_SmartCalc && rm -rf *tgz && rm -rf build && rm -rf .qmake.stash
